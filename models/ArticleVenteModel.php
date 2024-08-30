@@ -6,6 +6,11 @@ class ArticleVenteModel  extends ArticleModel{
     private string $dateProd;
     
 
+    public function __construct()
+    {
+        $this->type = 'ArticleVente';
+    }
+    
     public function getDateProd()
     {
         return $this->dateProd;
