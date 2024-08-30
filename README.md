@@ -4,4 +4,5 @@
 - [CategorieModel](#pour_la_gestion_des_categories_d'articles)
 
 ## Pour exécuter un projet PHP, on peut utiliser le serveur interne de PHP.
-> On tape ceci : php -S localhost:8000 index.php
+> On se pointe dans le dossier qui doit lancer le projet (Public)
+> Puis on tape ceci : php -S localhost:8000 index.php
