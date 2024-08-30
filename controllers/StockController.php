@@ -14,9 +14,11 @@ class StockController{
             $categories[]=$categorie;
         }
         return $categories;
+
+        // Puis on charge la vue des catégories (Response HTML+CSS)
+        require_once "./../views/categorie/liste.html.php";
     }
 
-    
 
 }
 
