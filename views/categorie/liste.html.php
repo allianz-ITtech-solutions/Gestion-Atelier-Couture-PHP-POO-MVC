@@ -37,7 +37,7 @@
                                     <th scope="col">Libelle</th>
 =                                </tr>
                             </thead>
-                            <!-- Récupération de la liste des personnes et affichage des données -->
+                            <!-- Récupération de la liste des categories et affichage des données -->
                             <?php foreach ($categories as $value): ?>
                                 <tbody>
                                     <tr class="">
