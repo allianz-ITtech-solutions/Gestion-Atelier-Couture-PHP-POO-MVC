@@ -11,9 +11,12 @@ class StockController{
             $categorie = new CategorieModel();
             $categorie->setId($i);
             $categorie->setLibelle("Categorie".$i);
+            $categories[]=$categorie;
         }
         return $categories;
     }
+
+    
 
 }
 
