@@ -10,20 +10,15 @@ require_once "./../models/ArticleVenteModel.php";
 class StockController{
 
     public function listerCategories(): void {
-        $categories = [];
-        for ($i=1; $i <= 5; $i++) { 
-            $categorie = new CategorieModel();
-            $categorie->setId($i);
-            $categorie->setLibelle("Categorie ".$i);
-            $categories[] = $categorie;
-        }
+        $categorieModel = new CategorieModel;
+        $categories = $categorieModel->findAll();
 
         // Puis on charge la vue des catégories (Response HTML+CSS)
         require_once "./../views/categorie/liste.html.php";
     }
 
     public function listerArticles() {
-        
+
         $articles = [];
         
         for ($i=1; $i <= 10; $i++) {
