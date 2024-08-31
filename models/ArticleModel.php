@@ -5,7 +5,7 @@ abstract class ArticleModel{
 
     protected int $id;
     protected string $libelle;
-    protected float $prix;
+    protected float $prixAchat;
     protected int $qteStock;
 
     // En PHP, les énumérations ne sont pas évolués. On le crée donc en string notre énumération type
@@ -40,17 +40,15 @@ abstract class ArticleModel{
     }
 
 
-    public function getPrix()
+    public function getPrixAchat()
     {
-        return $this->prix;
+        return $this->prixAchat;
     }
 
 
-    public function setPrix($prix)
+    public function setPrixAchat($prixAchat)
     {
-        $this->prix = $prix;
-
-        return $this;
+        $this->prixAchat = $prixAchat;
     }
 
 
@@ -63,8 +61,6 @@ abstract class ArticleModel{
     public function setQteStock($qteStock)
     {
         $this->qteStock = $qteStock;
-
-        return $this;
     }
 
 
@@ -77,9 +73,8 @@ abstract class ArticleModel{
     public function setType($type)
     {
         $this->type = $type;
-
-        return $this;
     }
+    
 }
 
 ?>
