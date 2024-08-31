@@ -8,8 +8,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarID">
                     <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#">Categorie</a>
-                        <a class="nav-link" aria-current="page" href="#">Article</a>
+                        <a class="nav-link active" aria-current="page" href="http://localhost:8000/?page=categorie">Categorie</a>
+                        <a class="nav-link" aria-current="page" href="http://localhost:8000/?page=article">Article</a>
                     </div>
                 </div>
             </div>
