@@ -23,6 +23,8 @@
     <body>
         <header>
             <!-- place navbar here -->
+            <!-- NB : C'est pas une bonne approche car on le fera autant de fois qu'il yaura de pages -->
+            <?php require_once "./../views/inc/nav.html.php"; ?>
         </header>
         <main>
             <div class="container mt-5">
@@ -43,11 +45,20 @@
 =                                </tr>
                             </thead>
                             <!-- Récupération de la liste des categories et affichage des données -->
-                            <?php foreach ($categories as $value): ?>
+                            <?php 
+                            // echo "<pre>";
+                            //     var_dump($articles);
+                            // echo "</pre>";
+                            foreach ($articles as $value): ?>
                                 <tbody>
                                     <tr class="">
                                         <td scope="row"><?=$value->getId()?></td>
                                         <td scope="row"><?=$value->getLibelle()?></td>
+                                        <td scope="row"><?=$value->getType()?></td>
+                                        <td scope="row"><?=$value->getPrixAchat()?></td>
+                                        <td scope="row"><?=$value->getQteStock()?></td>
+                                        <td scope="row"><?=$value->getType()=="ArticleConf" ? $value->getFournisseur():""?></td>
+                                        <td scope="row"><?=$value->getType()=="ArticleVente" ? $value->getDateProd():""?></td>
                                     </tr>
                                 </tbody>
                             <?php endforeach ?>
