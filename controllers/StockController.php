@@ -1,6 +1,7 @@
 <?php
 
 // On charge tous nos éléments comme si on était dans index.php
+require_once "./../models/Model.php";
 require_once "./../models/CategorieModel.php";
 require_once "./../models/ArticleModel.php";
 require_once "./../models/ArticleConfModel.php";
@@ -11,8 +12,12 @@ class StockController{
 
     public function listerCategories(): void {
         $categorieModel = new CategorieModel;
-        $categories = $categorieModel->findAll();
+        for ($i=1; $i <= 5; $i++) {
+            $categorieModel->setLibelle("Categorie ".$i);
+            // $categorieModel->insert();
+        }
 
+        $categories = $categorieModel->findAll();
         // Puis on charge la vue des catégories (Response HTML+CSS)
         require_once "./../views/categorie/liste.html.php";
     }
