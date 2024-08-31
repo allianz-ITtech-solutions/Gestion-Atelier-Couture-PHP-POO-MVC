@@ -20,8 +20,6 @@ class ArticleVenteModel  extends ArticleModel{
     public function setDateProd($dateProd)
     {
         $this->dateProd = $dateProd;
-
-        return $this;
     }
 
 }
