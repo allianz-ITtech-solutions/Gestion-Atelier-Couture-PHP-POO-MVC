@@ -64,7 +64,7 @@ class CategorieModel{
 
     // Méthode Accès aux Données
     public function findAll(): array {
-        $sql = "select * from categories";
+        $sql = "select * from categories order by id asc";
         // Query permet de faire une requete simple. Il retourne un statement
         // Un statement n'est rien d'autre que la table (lignes et colonnes)
         $stmt = $this->pdo->query($sql);
