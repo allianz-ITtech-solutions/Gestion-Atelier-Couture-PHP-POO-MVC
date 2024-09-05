@@ -65,6 +65,23 @@ class Model{
         return $stmt->fetch(); // Retourne un objet sous forme de CategorieModel
     }
 
+    /*
+        En PHP, lorsqu'une méthode la classe mère peut etre redéfinie par les classes filles,
+        on utilise le mot clé 'abstract'.
+
+        Une méthode abstract est une méthode ne possédant pas de corps, mais qui exige d'etre
+        redéfini dans les classes filles.
+
+        NB : Une méthode abstract ne peut se trouver que dans une classe abstract.
+    */
+    // public abstract function insert($data=null):int {
+    //     // Comme l'id est auto-incrément, on le met à NULL
+    //     $sql = "INSERT INTO `$this->tableName` (`id`, `libelle`) VALUES (NULL, :libelle)"; // Requete préparée
+    //     $stmt = $this->pdo->prepare($sql);
+    //     $stmt->execute(["libelle"=>$this->libelle]);
+    //     return $stmt->rowCount(); // Retourne le nombre de lignes supprimé
+    // }
+
     public function delete(int $id):int {
         $sql = "delete from $this->tableName where id = :x"; // Requete préparée
         $stmt = $this->pdo->prepare($sql);
