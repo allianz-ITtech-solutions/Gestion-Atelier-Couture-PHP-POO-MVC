@@ -20,6 +20,13 @@ abstract class ArticleModel extends Model{
     // En PHP, les énumérations ne sont pas évolués. On le crée donc en string notre énumération type
     protected string $type;
 
+    /*
+        En PHP, les relations ne sont pas faites comme en JAVA avec les listes et objets,
+        mais en approche Base de Données (MLD).
+    */
+    protected int $categorieID;
+
+    
     
     public function __construct()
     {
@@ -89,15 +96,37 @@ abstract class ArticleModel extends Model{
     }
 
 
-    public function insert():int {
-        // Comme l'id est auto-incrément, on le met à NULL
-        $sql = "INSERT INTO `$this->tableName` (`id`, `libelle`) VALUES (NULL, :libelle)"; // Requete préparée
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(["libelle"=>$this->libelle]);
-        return $stmt->rowCount(); // Retourne le nombre de lignes supprimé
+    public function getCategorieId()
+    {
+        return $this->categorieID;
     }
 
     
+    public function setCategorieId($categorieID)
+    {
+        $this->categorieID = $categorieID;
+    }
+
+
+    // $data est un paramètre optionel
+    // Il peut etre le forunisseur ou la date de production si il est passé
+    public function insert($data=null):int {
+        // Comme l'id est auto-incrément, on le met à NULL
+         // Requete préparée
+        $sql = "INSERT INTO `$this->tableName` VALUES (NULL, :libelle, :prixAchat, :qteStock, :type, :fournisseur, :dateProd, :categorie_id)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(["libelle"=>$this->libelle,
+                        "prixAchat"=>$this->prixAchat,
+                        "qteStock"=>$this->qteStock,
+                        "type"=>$this->type,
+                        "fournisseur"=>$this->type == "ArticleConf" ? $data : NULL,
+                        "dateProd"=>$this->type == "ArticleVente" ? $data : NULL,
+                        "categorie_id"=>$this->categorieID
+        ]);
+        return $stmt->rowCount(); // Retourne le nombre de lignes supprimé
+    }
+
+
 }
 
 ?>
