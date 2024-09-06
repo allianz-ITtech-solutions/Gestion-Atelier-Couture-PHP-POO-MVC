@@ -10,7 +10,7 @@ require_once "./../models/Model.php";
     de l'héritage (Classe mère et classes filles) seront regroupés dans une seule table et les 
     attributs des classes filles seront nullables.
 */
-abstract class ArticleModel extends Model{
+class ArticleModel extends Model{
 
     protected int $id;
     protected string $libelle;
