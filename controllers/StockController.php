@@ -9,45 +9,58 @@ require_once "./../models/ArticleVenteModel.php";
 
 
 class StockController{
+    
 
+    // Comme categorie est utile dans plusieurs parties du code, c'est mieux de le mettre comme attribut
+    // C'est une bonne pratique
+    private CategorieModel $categorieModel;
+    private ArticleModel $articleModel;
+
+
+    // Et on instancie categorieModel et ArticleModel dans le constructeur
+    public function __construct()
+    {
+        $this->categorieModel = new CategorieModel;
+        $this->articleModel = new ArticleModel;
+    }
+
+    
     public function listerCategories(): void {
-        $categorieModel = new CategorieModel;
-        for ($i=1; $i <= 5; $i++) {
-            $categorieModel->setLibelle("Categorie ".$i);
-            // $categorieModel->insert();
-        }
-
-        $categories = $categorieModel->findAll();
+        $categories = $this->categorieModel->findAll();
         // Puis on charge la vue des catégories (Response HTML+CSS)
         require_once "./../views/categorie/liste.html.php";
     }
 
-    public function listerArticles() {
 
-        $articles = [];
+    // La fonction extract() en PHP crée des variables individuelles à partir des clés d'un tableau,
+    // avec les valeurs correspondantes.
+    public function ajouterCategorie(): void {
+        // On récupère les données saisies dans le champ
+        extract($_POST); // Crée une variable nommée $libelle avec comme valeur la donnée du champ
+        // On affecte le libelle à un objet categorie
+        $this->categorieModel->setLibelle($libelle);
+        // Et on l'insère en base de données
+        $this->categorieModel->insert();
+
+        // Après avoir ajouter, on doit afficher la liste des catégories, on fait donc une redirection
+        // NB : Quand on est sur une action qui n'affiche pas une vue (exple: lister), on fait une redirection
+        header("location:http://localhost:8000/?page=categorie");
+    }
+
+
+    public function listerArticles() {
         
-        for ($i=1; $i <= 10; $i++) {
-            if ($i%2 == 0) {
-                $article = new ArticleVenteModel;
-                $article->setId($i);
-                $article->setLibelle("Article Vente ".$i);
-                $article->setPrixAchat($i*2000.0);
-                $article->setQteStock($i*100);
-                $article->setDateProd("1$i-05-2023");                
-            }else{
-                $article = new ArticleConfModel;
-                $article->setId($i);
-                $article->setLibelle("Article Confection ".$i);
-                $article->setPrixAchat($i*500.0);
-                $article->setQteStock($i*200);
-                $article->setFournisseur("Fournisseur ".$i);
-            }
-            
-            $articles[] = $article;
-        }
+        $articles = $this->articleModel->findAll();
 
         // Puis on charge la vue des catégories (Response HTML+CSS)
         require_once "./../views/article/liste.html.php";
+    }
+
+
+    public function ajouterArticle() {
+        
+        $this->articleModel->insert();
+
     }
 
 
