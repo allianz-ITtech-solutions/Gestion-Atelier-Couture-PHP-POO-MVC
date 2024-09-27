@@ -23,6 +23,8 @@
     <body>
         <header>
             <!-- place navbar here -->
+            <!-- NB : C'est pas une bonne approche car on le fera autant de fois qu'il yaura de pages -->
+            <?php require_once "./../views/inc/nav.html.php"; ?>
         </header>
         <main>
             <div class="container mt-5">
