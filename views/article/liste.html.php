@@ -57,8 +57,14 @@
                                         <td scope="row"><?=$value->getType()?></td>
                                         <td scope="row"><?=$value->getPrixAchat()?></td>
                                         <td scope="row"><?=$value->getQteStock()?></td>
-                                        <td scope="row"><?=$value->getType()=="ArticleConf" ? $value->getFournisseur():""?></td>
-                                        <td scope="row"><?=$value->getType()=="ArticleVente" ? $value->getDateProd():""?></td>
+                                        <!--
+                                            <td scope="row"></td>
+                                            <td scope="row"></td>
+                                        -->
+                                        <?php
+                                        // <?=$value->getType()=="ArticleConf" ? $value->getFournisseur():""?
+                                        // <?=$value->getType()=="ArticleVente" ? $value->getDateProd():""?
+                                        ?>
                                     </tr>
                                 </tbody>
                             <?php endforeach ?>
