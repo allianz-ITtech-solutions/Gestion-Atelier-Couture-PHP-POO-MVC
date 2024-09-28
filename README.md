@@ -1,6 +1,4 @@
-## Ce projet est un projet de Gestion des Stocks pour une boutique de vente en ligne en POO + MVC version 2 (pas encore optimale).
-
-> La version 1 POO+MVC est dans le repository PHP Fondamentaux.
+## Ce projet est un projet de Gestion des Stocks pour une boutique de vente en ligne en POO + MVC version 3 (Acces BD + Ajout Categorie + Validator + Session).
 
 ## Table des matières
 - [Acces_BD_avec_PDO]
