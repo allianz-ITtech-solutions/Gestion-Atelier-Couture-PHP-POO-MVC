@@ -3,14 +3,9 @@
 > La version 1 POO+MVC est dans le repository PHP Fondamentaux.
 
 ## Table des matières
-- [Inclusion avec 'require_once'](#require_once(mauvaise_approche))
-- [Héritage_ArticleModel_ArticleConfModel_ArticleVenteModel](#)
-- [Création_d'un_Controller](#StockController.php)
-- [Ajout_des_méthodes_listerCategories_et_listerArticles_dans_le_controller](#listerCategories/listerArticles)
-- [Génération_de_fausses_données_dans_le_Controller](#avec_la_boucle_for)
-- [Création_des_vues_dédiées_pour_les_categories_et_les_articles](#)
-- [Création_d'une_navbar_et_inclusion_dans_les_vues_categories_et_articles](#mauvaise_approche)
-- [Ajout_d'un_switch_pour_gerer_l'affichage_des_pages_dynamiquement_avec_$GET](#GET[])
+- [Acces_BD_avec_PDO]
+- [Ajout_des_validations_avec_la_classe_Validator]
+- [Ajout_des_sessions_avec_la_classe_Session]
 
 
 ## Pour exécuter un projet PHP, on peut utiliser le serveur interne de PHP.
