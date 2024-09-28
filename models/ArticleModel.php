@@ -1,6 +1,6 @@
 <?php
 
-require_once "./../models/Model.php";
+require_once "./../config/Model.php";
 
 
 // Comme on ne peut créer que des articles de vente et des articles de confection, la classe Article sera en 'abstract'

@@ -1,7 +1,7 @@
 <?php
 
 
-require_once "./../models/Model.php";
+require_once "./../config/Model.php";
 
 
 // En PHP dans le modèle MVC, le Modèle joue le role de description des données mais aussi d'accès aux données via les requetes SQL
