@@ -1,5 +1,21 @@
 <!-- Ce fichier sera la page de présentation des données. Notre HTML -->
 
+<?php
+
+// C'est ici qu'on récupère les erreurs.
+
+// On crée un tableau d'erreurs
+$errors = [];
+
+// On vérifie si la clé errors existe dans la session. Si oui on les met dans le tableau 'errors'
+if(Session::exists("errors")) {
+    $errors = Session::get("errors");
+    // Après les avoir récupéré, on supprime la clé 'errors' de la Session. Une fois récupéré inutile de la garder dans la session
+    Session::unset("errors");
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -44,7 +60,9 @@
                             <div class="mb-2">
                                 <label for="" class="form-label ml-1">Libelle</label>
                                 <input type="text" name="libelle" id="" class="form-control" placeholder="" aria-describedby="helpId"/>
-                                <small id="helpId" class="text-danger mt-1">Help text</small>
+                                <small id="helpId" class="text-danger mt-1">
+                                    <?= $errors['libelle']??"" ?>
+                                </small>
                             </div>
                         </div>
                         <div class="col-2" style="margin-left:20px; margin-top: 30px;">
