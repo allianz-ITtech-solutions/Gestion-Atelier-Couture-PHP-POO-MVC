@@ -1,4 +1,5 @@
 ## Ce projet est un projet de Gestion des Stocks pour une boutique de vente en ligne en POO + MVC version 3 (Acces BD + Ajout Categorie + Validator + Session).
+## Cette version 3 n'est pas encore optimale.
 
 ## Table des matières
 - [Acces_BD_avec_PDO]
