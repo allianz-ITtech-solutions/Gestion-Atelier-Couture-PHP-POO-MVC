@@ -111,7 +111,7 @@ class ArticleModel extends Model{
     // Méthode qui va récupérer les articles par type (de confection ou de vente)
     public function findAll(): array
     {
-        return $this->executeSelect("select * from $this->tableName like $this->type");
+        return $this->executeSelect("select * from $this->tableName where type like :typeArt", ["typeArt"=>$this->type], true);
     }
 
 
