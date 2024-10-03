@@ -83,6 +83,12 @@ class Model{
     }
 
 
+    // Méthode centrale de modification et de suppression
+    public function executeUpdate(string $sql, array $datas=[], $single=false):int {
+        return 0;
+    }
+
+
     /*
         En PHP, lorsqu'une méthode la classe mère peut etre redéfinie par les classes filles,
         on utilise le mot clé 'abstract'.
