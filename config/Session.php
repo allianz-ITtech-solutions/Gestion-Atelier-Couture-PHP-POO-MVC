@@ -8,7 +8,10 @@ class Session {
 
     // Méthode qui crée une Session
     public static function start() {
-        session_start(); // Lance la session. Le serveur crée derrière un tableau $_SESSION
+        // Avant de démarrer la session, on doit vérifier si la session est déja ouverte
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start(); // Lance la session. Le serveur crée derrière un tableau $_SESSION
+        }
     }
 
     // Méthode qui permet de stocker une donnée dans une clé de la session
