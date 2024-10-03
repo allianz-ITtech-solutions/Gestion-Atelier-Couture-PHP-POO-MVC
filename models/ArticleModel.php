@@ -108,6 +108,7 @@ class ArticleModel extends Model{
     }
 
 
+    // Redéfinition
     // Méthode qui va récupérer les articles par type (de confection ou de vente)
     public function findAll(): array
     {
