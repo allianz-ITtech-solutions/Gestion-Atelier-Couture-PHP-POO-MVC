@@ -50,23 +50,38 @@ class Model{
 
     // Méthode Accès aux Données
     public function findAll(): array {
-        $sql = "select * from $this->tableName order by id asc";
-        $stmt = $this->pdo->query($sql);
-        return $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+        return $this->executeSelect("select * from $this->tableName order by id asc");
     }
+
+
+    public function findById(int $id):self {
+        // Appel de executeSelect avec la requete, les données et true (pour retourner un seul résultat)
+        return $this->executeSelect("select * from $this->tableName where id = :x", ["x"=>$id], true);
+    }
+
 
     // prepare ===> requete avec paramètres.
     // $stmt = "select * from categories where id = $id"; ===> Interdit car expose les données (Sensible aux Injections SQL)
     // La bonne méthode est d'utiliser des jokers dans la requete (?, :nom).
 
-    // NB : 'fetch' ne prend pas en paramètre le type de retour (fetchMode)
-    public function findById(int $id):self {
-        $sql = "select * from $this->tableName where id = :x"; // Requete préparée
-        $stmt = $this->pdo->prepare($sql);
+    // NB : 'fetch' ne prend pas en paramètre le type de retour (FETCHMODE)
+
+    // Comme entre findAll et findById, il ya du code qui se répète, on peut créer une méthode pour simplifier
+    // Elle prendra une requete, des paramètres si la requete en a besoin, et un indicateur de retour (single)
+    // $single nous permet de savoir si la requete retourne un ou plusieurs résultats.
+    // Par défaut, il est à false qui signifie qu'il nous retourne par défaut plusieurs résultats.
+    public function executeSelect(string $sql, array $datas=[], $single=false):array|self {
+        $stmt = $this->pdo->prepare($sql); // prepare gère aussi query donc on peut garder
         $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
-        $stmt->execute(["x"=>$id]);
-        return $stmt->fetch(); // Retourne un objet sous forme de CategorieModel
+        $stmt->execute($datas);
+        // Si single == true
+        if ($single) {
+            return $stmt->fetch(); // Retourne un objet sous forme de la Classe
+        }else {
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+        }
     }
+
 
     /*
         En PHP, lorsqu'une méthode la classe mère peut etre redéfinie par les classes filles,
