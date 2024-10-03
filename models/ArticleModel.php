@@ -115,6 +115,13 @@ class ArticleModel extends Model{
     }
 
 
+    // Méthode qui récupère les types d'articles
+    public function findTypeArticles(): array
+    {
+        return $this->executeSelect("select distinct type from articles");
+    }
+
+
     // $data est un paramètre optionel
     // Il peut etre le forunisseur ou la date de production si il est passé
     public function insert($data=null):int {
