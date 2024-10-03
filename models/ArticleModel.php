@@ -108,6 +108,13 @@ class ArticleModel extends Model{
     }
 
 
+    // Méthode qui va récupérer les articles par type (de confection ou de vente)
+    public function findAll(): array
+    {
+        return $this->executeSelect("select * from $this->tableName like $this->type");
+    }
+
+
     // $data est un paramètre optionel
     // Il peut etre le forunisseur ou la date de production si il est passé
     public function insert($data=null):int {
@@ -125,7 +132,6 @@ class ArticleModel extends Model{
         ]);
         return $stmt->rowCount(); // Retourne le nombre de lignes supprimé
     }
-
 
 }
 
