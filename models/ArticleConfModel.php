@@ -26,6 +26,7 @@ class ArticleConfModel extends ArticleModel{
         return $this;
     }
 
+
     // On a redéfini la méthode insert en lui passant le fournisseur
     public function insert($data=null):int {
         return parent::insert($this->fournisseur);
