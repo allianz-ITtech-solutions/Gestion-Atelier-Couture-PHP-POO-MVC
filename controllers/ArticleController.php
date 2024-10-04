@@ -45,7 +45,16 @@ class ArticleController extends Controller {
     }
 
 
-    
+    // Méthode qui affiche le formulaire d'ajout d'un article
+    public function showFormArticle() {
+        $categories = $this->categorieModel->findAll();
+        // Si, on charge les types à partir des filles, on aura que le type de la classe fille
+        $types = $this->articleModel->findTypeArticles();
+        $this->renderView("article/form.html.php", [
+            "categories"=>$categories,
+            "types"=>$types
+        ]);
+    }
 
 
     // Méthode qui permet d'enregistrer un article
