@@ -47,7 +47,10 @@
                     dans le select.
                     Par défaut le select selectionnera 'ArticleConf'
                   -->
-                  
+                  <?php foreach ($types as $value): ?>
+                    <!-- Quand on selectionne une categorie, on nous retourne son id (value="") -->
+                        <option value="<?=$value->getType()?>"><?=$value->getType()?></option>
+                  <?php endforeach ?>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid state.
