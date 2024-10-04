@@ -88,4 +88,16 @@
         </div>
     </div>
 
-    
+    <!-- Comme ce js est propre à ce formulaire uniquement, pas nécessaire qu'on le mette dans du js dédié -->
+    <script>
+      // On récupère les éléments à manipuler
+      const divDate = document.querySelector('#div-date');
+      const divFour = document.querySelector('#div-four');
+      const selectType = document.querySelector('#select-type');
+
+      selectType.addEventListener('change', ()=>{
+          // Si la classe existe supprime la, s'il n'existe pas ajoutes la
+          divDate.classList.toggle('d-none');
+          divFour.classList.toggle('d-none');
+      });
+    </script>
