@@ -1,13 +1,19 @@
-## Ce projet est un projet de Gestion des Stocks pour une boutique de vente en ligne en POO + MVC version 2 (pas encore optimale).
+# Gestion des Stocks - Boutique en ligne (Version 4)
 
-> La version 1 POO+MVC est dans le repository PHP Fondamentaux.
+## Description
+Ce projet est une application de **gestion des stocks** pour une boutique de vente en ligne, développée en **POO + MVC**. Nous en sommes actuellement à la **version 4**, qui est beaucoup plus optimisée par rapport aux versions précédentes.
 
-## Table des matières
-- [Acces_BD_avec_PDO]
-- [Ajout_des_validations_avec_la_classe_Validator]
-- [Ajout_des_sessions_avec_la_classe_Session]
+> La **version 1** de l'application, également en **POO + MVC**, est disponible dans le repository intitulé **PHP Fondamentaux**.
 
+### Nouveautés de la Version 4 :
+- **Controller** : Développé en fonction de chaque modèle, incluant `Categorie` et `Article`.
+- **Router** : Système de routage amélioré pour une meilleure gestion des URL.
+- **Layout** : Mise en place d'une structure de mise en page plus flexible.
+- **Formulaire** : Ajout de la fonctionnalité de création d'articles.
 
-## Pour exécuter un projet PHP, on peut utiliser le serveur interne de PHP.
-> On se pointe dans le dossier qui doit lancer le projet (Public)
-> Puis on tape ceci : php -S localhost:8000 index.php
+## Exécution du projet
+Pour exécuter ce projet PHP, vous pouvez utiliser le serveur interne de PHP.
+
+1. Démarrez le serveur à partir du dossier **public** :
+   ```bash
+   php -S localhost:8000 -t public
