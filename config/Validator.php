@@ -12,12 +12,29 @@ class Validator {
 
     // Méthode qui vérifie si la valeur est vide et affiche l'erreur
     // Les key seront les name des input des formulaires
-    public static function isEmpty($value, $key, $message="Champ Obligatoire") : void {
+    public static function isEmpty($value, $key, $message="Champ Obligatoire") : bool {
         if (empty($value)) {
             // Si le champ est vide, on ajoute l'erreur dans le tableau d'erreurs
             self::$errors[$key] = $message;
+            return true; // Si le champ est vide, on retourne true
+        }
+        return false; // Sinon on retourne false
+    }
+
+
+    // Méthode qui vérifie si la valeur est positive ou pas.
+    public static function isPositiveNumber($value, $key, $message="Champ doit etre positif") : bool {
+        // Si la valeur est n'est pas vide,
+        if (!self::isEmpty($value, $key, $message)) {
+            // On teste si la valeur est numérique et si elle est positive
+            if (!is_numeric($value) || $value <= 0) {
+                self::$errors[$key] = $message;
+                return false;
+            }
+            return true;
         }
     }
+
 
     // Méthode qui vérifie si un formulaire a été validé ou pas
 
