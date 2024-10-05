@@ -59,6 +59,14 @@ class Controller {
 
     public function redirect(string $path) {
         header("location:".BASE_URL."?page=$path");
+        /*
+            Par défaut, si on fait plusieurs 'header location' dans un bloc, seule la dernière
+            'header location' faite sera appliqué.
+            Or quand on fait un 'header location', on doit s'arreter sur lui, on ne doit pas suivre
+            sur les autres étapes de la méthode.
+            C'est un peu l'équivalent d'un 'break'.
+        */
+        exit();
     }
 
 }
