@@ -47,6 +47,11 @@ if (isset($_REQUEST['page'])) {
         case 'show-form-articles':
             $artCtrl->showFormArticle();
             break;
+
+        // On ajoute la route qui enregistre un article
+        case 'add-article':
+            $artCtrl->save();
+            break;
             
         case 'add_categorie':
             // Enregistre une catégorie
