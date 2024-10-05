@@ -79,7 +79,7 @@ class CategorieController extends Controller {
 
         // Après avoir ajouter, on doit afficher la liste des catégories, on fait donc une redirection
         // NB : Quand on est sur une action qui n'affiche pas une vue (exple: lister), on fait une redirection
-        header("location:".BASE_URL."?page=categorie");
+        $this->redirect("categorie");
     }
 
 }
