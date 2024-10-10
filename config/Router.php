@@ -60,6 +60,10 @@ if (isset($_REQUEST['page'])) {
             // Enregistre une catégorie
             $catCtrl->save();
             break;
+        case 'login':
+            // Route qui fait la connexion
+            $authCtrl->login();
+            break;
         
         default:
             # code...
