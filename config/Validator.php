@@ -33,6 +33,7 @@ class Validator {
             }
             return true;
         }
+        return true;
     }
 
 
