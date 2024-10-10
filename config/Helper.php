@@ -16,6 +16,16 @@ class Helper {
         die;
     }
 
+
+    // Cette méthode vérifie si le tableau d'erreurs contient le champ passé.
+    // S'il conient le champ passé, il colore le champ input en rouge.
+    public static function errorField(array $error, $field) {
+        if(array_key_exists($field, $error)) echo "is-invalid";
+    }
+
+
+    
+
 }
 
 ?>
