@@ -59,8 +59,45 @@ class ArticleController extends Controller {
 
     // Méthode qui permet d'enregistrer un article
     public function save() {
-        
-        $this->articleModel->insert();
+        // Validation ou Controle de saisie
+        Validator::isEmpty($_POST['libelle'], 'libelle', 'Le Libelle est obligatoire');
+        Validator::isEmpty($_POST['categorie'], 'categorie', 'La Categorie est obligatoire');
+        Validator::isEmpty($_POST['type'], 'type', 'Le Type est obligatoire');
+        Validator::isPositiveNumber($_POST['prixAchat'], 'prixAchat');
+        Validator::isPositiveNumber($_POST['qteStock'], 'qteStock');
+        // On vérifie si ces 3 sont valide
+        if (Validator::validate()) {
+            // On vérfie quel type a été selectionné pour savoir si on doit valider dateProd ou Fournisseur
+            if ($_POST['type'] == 'ArticleVente') {
+                // Si c'est égale à article de vente, on valide la date
+                Validator::isEmpty($_POST['dateProd'], 'dateProd', 'La Date est obligatoire');
+            }else{
+                Validator::isEmpty($_POST['fournisseur'], 'fournisseur', 'Le Fournisseur est obligatoire');
+            }
+
+            // On valide à nouveau le formulaire après avoir saisi fournisseur ou date
+            // Si on rentre ici, c'est que tout est valide
+            if(Validator::validate()) {
+
+                extract($_POST);
+
+                // Dans le soucis d'éviter la duplication de code, on va utiliser articleModel (la classe mère)
+                $this->articleModel->setLibelle($libelle);
+                $this->articleModel->setCategorieId($categorie); // Quand on selectionne une categorie dans le form, on nous retourne son id (value="")
+                $this->articleModel->setPrixAchat($prixAchat);
+                $this->articleModel->setQteStock($qteStock);
+                $this->articleModel->setType($type);
+                $data = $type == 'ArticleVente' ? $dateProd : $fournisseur;
+                $this->articleModel->insert($data);
+
+                $this->redirect("article");
+            }
+        }
+
+        // Si on arrive ici, c'est que le formulaire n'est pas valide
+        // On stocke les erreur dans la session
+        Session::set('errors', Validator::getErrors());
+        $this->redirect("show-form-articles"); // Et on reste sur la page d'enregistrement articles
 
     }
 
