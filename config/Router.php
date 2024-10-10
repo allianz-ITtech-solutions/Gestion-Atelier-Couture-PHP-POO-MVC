@@ -4,10 +4,13 @@
 
 require_once "./../controllers/CategorieController.php";
 require_once "./../controllers/ArticleController.php";
+require_once "./../controllers/AuthController.php";
 
 
 $catCtrl = new CategorieController;
 $artCtrl = new ArticleController;
+$authCtrl = new AuthController;
+
 
 // Quand on fait ca, on voit les données qui ont été soumis lorsqu'on clique sur le bouton de soumission
 // var_dump($_POST);
@@ -65,8 +68,8 @@ if (isset($_REQUEST['page'])) {
 
 }
 else{
-    // Sinon, si elle n'existe pas, on affiche la page des categories par défaut
-    $catCtrl->index();
+    // Sinon, si elle n'existe pas, on affiche la page de connexion
+    $authCtrl->showLoginForm();
 }
 
 
