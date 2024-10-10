@@ -24,7 +24,10 @@ class Helper {
     }
 
 
-    
+    // Cette méthode est utilisée pour afficher en rouge un message d'erreur lorsqu'une saisie est invalide
+    public static function errorMessage(array $error, $field) {
+        if(array_key_exists($field, $error)) echo "invalid-feedback";
+    }
 
 }
 
