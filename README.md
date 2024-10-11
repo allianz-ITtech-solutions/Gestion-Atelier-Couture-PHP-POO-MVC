@@ -1,15 +1,14 @@
-# Gestion des Stocks - Boutique en ligne (Version 4)
+# Gestion des Stocks - Boutique en ligne (Version 5)
 
 ## Description
-Ce projet est une application de **gestion des stocks** pour une boutique de vente en ligne, développée en **POO + MVC**. Nous en sommes actuellement à la **version 4**, qui est beaucoup plus optimisée par rapport aux versions précédentes.
+Ce projet est une application de **gestion des stocks** pour une boutique de vente en ligne, développée en **POO + MVC**. Nous en sommes actuellement à la **version 5**, qui introduit de nouvelles fonctionnalités significatives et une optimisation continue par rapport aux versions précédentes.
 
 > La **version 1** de l'application, également en **POO + MVC**, est disponible dans le repository intitulé **PHP Fondamentaux**.
 
-### Nouveautés de la Version 4 :
-- **Controller** : Développé en fonction de chaque modèle, incluant `Categorie` et `Article`.
-- **Router** : Système de routage amélioré pour une meilleure gestion des URL.
-- **Layout** : Mise en place d'une structure de mise en page plus flexible.
-- **Formulaire** : Ajout de la fonctionnalité de création d'articles.
+### Nouveautés de la Version 5 :
+- **Enregistrement d'article** : Possibilité d'enregistrer et gérer des articles dans la boutique.
+- **Validation des formulaires** : Amélioration des mécanismes de validation pour garantir des données fiables lors de l'enregistrement ou de la modification d'articles.
+- **Connexion** : Mise en place d'un système d'authentification avec une fonctionnalité de connexion sécurisée.
 
 ## Exécution du projet
 Pour exécuter ce projet PHP, vous pouvez utiliser le serveur interne de PHP.
