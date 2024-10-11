@@ -7,6 +7,7 @@ class UserModel extends Model {
     //      En POO, ce n'est pas bon, mais en PHP c'est très utilisé.
     public int $id;
     public string $nomComplet;
+    public string $login;
     public string $password;
     public string $role;
 
@@ -18,7 +19,14 @@ class UserModel extends Model {
     }
 
 
-   
+    public function findUserByLoginAndPassword(string $login, string $password) {
+        return $this->executeSelect("select * from $this->tableName where login like :login and password like :password",
+                                    [
+                                        "login"=>$login, 
+                                        "password"=>$password
+                                    ], true);
+    }
+
 }
 
 ?>
