@@ -37,6 +37,19 @@ class Validator {
     }
 
 
+    // Méthode qui vérifie si la valeur saisie est bien un email ou pas
+    public static function isEmail($value, $key, $message="Email Invalide") : bool {
+        // Si la valeur est n'est pas vide,
+        if (!self::isEmpty($value, $key, $message)) {
+            // filter_vap prend la valeur et le critère de filtrage sur la valeur
+            if (!filter_var("", FILTER_VALIDATE_EMAIL) == false) {
+                self::$errors[$key] = $message;
+            }
+        }
+        return true;
+    }
+
+
     // Méthode qui vérifie si un formulaire a été validé ou pas
 
     public static function validate() : bool {
