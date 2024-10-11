@@ -70,7 +70,7 @@ class Model{
     // Elle prendra une requete, des paramètres si la requete en a besoin, et un indicateur de retour (single)
     // $single nous permet de savoir si la requete retourne un ou plusieurs résultats.
     // Par défaut, il est à false qui signifie qu'il nous retourne par défaut plusieurs résultats.
-    public function executeSelect(string $sql, array $datas=[], $single=false):array|self {
+    public function executeSelect(string $sql, array $datas=[], $single=false):array|self|bool {
         $stmt = $this->pdo->prepare($sql); // prepare gère aussi query donc on peut garder
         $stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
         $stmt->execute($datas);
