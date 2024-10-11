@@ -56,12 +56,18 @@ if (isset($_REQUEST['page'])) {
             $artCtrl->save();
             break;
             
+        // Enregistre une catégorie
         case 'add_categorie':
-            // Enregistre une catégorie
             $catCtrl->save();
             break;
+
+        // Route qui affiche la page de connexion
+        case 'show-form-login':
+            $authCtrl->showLoginForm();
+            break;
+
+        // Route qui fait la connexion
         case 'login':
-            // Route qui fait la connexion
             $authCtrl->login();
             break;
         
