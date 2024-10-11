@@ -42,8 +42,9 @@ class Validator {
         // Si la valeur est n'est pas vide,
         if (!self::isEmpty($value, $key, $message)) {
             // filter_vap prend la valeur et le critère de filtrage sur la valeur
-            if (!filter_var("", FILTER_VALIDATE_EMAIL) == false) {
+            if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
                 self::$errors[$key] = $message;
+                return false;
             }
         }
         return true;
@@ -61,6 +62,13 @@ class Validator {
     public static function getErrors()
     {
         return self::$errors;
+    }
+
+
+    // Méthode permettant d'ajouter une erreur dans le tableau d'erreurs à une clé précise
+    public static function addError($key, $error)
+    {
+        self::$errors[$key] = $error;
     }
 
 }
